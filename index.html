@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecciones Image - Laboratorio de Ilusiones Ópticas</title>
+  <meta name="description" content="Videojuego interactivo 2D de proyecciones ópticas. Elige tu ilusión, grábala en un pendrive, conéctalo al proyector, apaga las luces y activa la palanca.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Game Container -->
+  <div id="game-app" class="game-container">
+
+    <!-- ============================================================
+         PANTALLA 1: INICIO (Bienvenida y Comenzar)
+         ============================================================ -->
+    <section id="screen-start" class="screen screen-start active">
+      <div class="start-backdrop-fx"></div>
+      
+      <div class="start-card glass-panel">
+        <div class="logo-wrapper">
+          <img src="img/game_logo.svg" alt="Proyecciones Image Logo" class="main-logo-img">
+        </div>
+
+        <h1 class="visually-hidden">Proyecciones Image</h1>
+        
+        <p class="start-tagline">
+          Explora el fascinante mundo de las <strong>ilusiones ópticas</strong> y los efectos de proyección visual interactiva.
+        </p>
+
+        <!-- Dynamic Optical Illusion Showcase in Start Screen -->
+        <div class="start-preview-container">
+          <div class="preview-ring">
+            <img id="start-hero-thumb" src="img/illusion_spiral.jpg" alt="Ilusión Óptica Preview" class="hero-thumb-img">
+          </div>
+          <div class="start-steps-badge">
+            <span class="step-pill">1. Elige tu ilusión</span>
+            <span class="step-pill">2. Graba en Pendrive</span>
+            <span class="step-pill">3. Conecta al Proyector</span>
+            <span class="step-pill">4. ¡Activa la Palanca!</span>
+          </div>
+        </div>
+
+        <div class="start-actions">
+          <button id="btn-start" class="btn btn-primary btn-glow" type="button">
+            <span class="btn-icon">▶</span>
+            <span class="btn-text">COMENZAR</span>
+          </button>
+        </div>
+
+        <footer class="start-footer">
+          <span>Clase 2 • Image Campus • Videojuego 2D con Assets Dedicados</span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PANTALLA 2: PANTALLA DEL JUEGO (Escenario 2D + Computadora)
+         ============================================================ -->
+    <section id="screen-game" class="screen screen-game">
+      
+      <!-- Top Navigation & Status Bar -->
+      <header class="game-header">
+        <div class="header-brand">
+          <img src="img/game_logo.svg" alt="Proyecciones Image" class="header-logo-mini">
+          <span class="room-indicator">SALA DE PROYECCIÓN 2D</span>
+        </div>
+
+        <!-- Quest / Progress tracker -->
+        <div class="quest-tracker">
+          <div id="step-1" class="quest-step active">
+            <span class="step-num">1</span>
+            <span class="step-label">Elegir Ilusión</span>
+          </div>
+          <div class="step-arrow">→</div>
+          <div id="step-2" class="quest-step">
+            <span class="step-num">2</span>
+            <span class="step-label">Descargar</span>
+          </div>
+          <div class="step-arrow">→</div>
+          <div id="step-3" class="quest-step">
+            <span class="step-num">3</span>
+            <span class="step-label">Conectar USB</span>
+          </div>
+          <div class="step-arrow">→</div>
+          <div id="step-4" class="quest-step">
+            <span class="step-num">4</span>
+            <span class="step-label">Activar Palanca</span>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button id="btn-sound" class="btn-icon-round" title="Activar/Silenciar Audio">
+            <span id="sound-icon">🔊</span>
+          </button>
+          <button id="btn-restart" class="btn-icon-round" title="Reiniciar Juego">
+            <span>🔄</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Interactive Game Stage Layout -->
+      <main class="game-main-layout">
+
+        <!-- ========================================================
+             ESCENARIO 2D (Fondo Blanco, Personaje, Proyector, Palanca)
+             ======================================================== -->
+        <div id="stage-viewport" class="stage-viewport">
+          
+          <!-- Cinematic Lights-Off Ambient Dark Overlay -->
+          <div id="lights-overlay" class="lights-overlay"></div>
+
+          <!-- Projector Volumetric Light Beam Cone -->
+          <div id="light-beam-cone" class="light-beam-cone">
+            <div class="beam-glow"></div>
+            <div class="beam-particles"></div>
+          </div>
+
+          <!-- Back Wall Screen: Optical Illusion Canvas Projection -->
+          <div id="projection-wall" class="projection-wall">
+            <div class="screen-frame">
+              <div class="screen-header">
+                <span class="rec-dot"></span>
+                <span id="screen-status-text">PANTALLA DE PROYECCIÓN [EN ESPERA]</span>
+              </div>
+              <div class="canvas-container">
+                <canvas id="projection-canvas" width="600" height="400"></canvas>
+                <!-- Standby Placeholder on screen -->
+                <div id="canvas-standby" class="canvas-standby">
+                  <div class="standby-icon">📽️</div>
+                  <p id="standby-hint">Esperando que se active el proyector...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2D Room Floor & Elements -->
+          <div class="room-environment">
+            <div class="room-floor-grid"></div>
+
+            <!-- 1. LEFT: Cartoon Character at PC Desk -->
+            <div id="character-station" class="interactive-object character-desk-wrapper">
+              <div class="desk-glow"></div>
+              <img src="img/character_pc.jpg" alt="Persona en Computadora" class="asset-img character-img">
+              <div class="character-speech-bubble" id="character-bubble">
+                "¡Selecciona una ilusión en mi pantalla y descárgala en el pendrive!"
+              </div>
+            </div>
+
+            <!-- 2. CENTER: Optical Video Projector on Stand -->
+            <div id="projector-station" class="interactive-object projector-wrapper">
+              <img src="img/projector.jpg" alt="Proyector en Tripié" class="asset-img projector-img">
+              
+              <!-- Projector Optical Lens Flash -->
+              <div id="projector-lens-glow" class="projector-lens-glow"></div>
+
+              <!-- USB Slot on Projector -->
+              <div id="projector-usb-slot" class="projector-usb-slot" title="Ranura USB para Pendrive">
+                <div class="slot-light" id="slot-led"></div>
+                <span class="slot-label">PUERTO USB</span>
+                <!-- Inserted Pendrive Element inside Slot -->
+                <div id="inserted-pendrive" class="inserted-pendrive hidden">
+                  <img src="img/pendrive.jpg" alt="Pendrive Conectado" class="pendrive-mini-img">
+                  <span class="usb-data-stream"></span>
+                </div>
+              </div>
+
+              <!-- Interactive Prompt for Projector -->
+              <button id="btn-insert-usb" class="btn-prompt-action hidden" type="button">
+                <span>🔌 Conectar Pendrive</span>
+              </button>
+            </div>
+
+            <!-- 3. RIGHT/CENTER: Industrial Activation Lever ("ACTIVAR") -->
+            <div id="lever-station" class="interactive-object lever-wrapper">
+              <div class="lever-panel-frame">
+                <div class="lever-header-tag">INTERRUPTOR MAESTRO</div>
+                
+                <div id="lever-interactive" class="lever-mechanism disabled" title="Palanca de Activación">
+                  <div class="lever-box">
+                    <img src="img/lever.svg" alt="Palanca de Activación" class="lever-asset-svg">
+                    <div id="lever-arm-handle" class="lever-arm-handle"></div>
+                  </div>
+                </div>
+
+                <div class="lever-status-badge">
+                  <div id="lever-led" class="lever-led-indicator"></div>
+                  <span id="lever-status-text">BLOQUEADA</span>
+                </div>
+
+                <button id="btn-pull-lever" class="btn-lever-action disabled" type="button" disabled>
+                  ⚡ ACTIVAR PROYECTOR
+                </button>
+              </div>
+            </div>
+
+            <!-- Dynamic Floating / Transporting Pendrive on Stage -->
+            <div id="flying-pendrive" class="flying-pendrive hidden">
+              <img src="img/pendrive.jpg" alt="Pendrive USB" class="flying-usb-img">
+              <div class="usb-sparkle-trail"></div>
+            </div>
+
+          </div>
+
+          <!-- Projection Controls HUD (Visible when lights are off and illusion is projecting) -->
+          <div id="projection-live-hud" class="projection-live-hud hidden">
+            <div class="hud-card glass-panel-dark">
+              <div class="hud-header">
+                <div class="hud-title">
+                  <span class="live-badge">PROYECTANDO EN VIVO</span>
+                  <h3 id="hud-illusion-title">Espiral Hipnótica</h3>
+                </div>
+                <button id="btn-lights-on" class="btn btn-secondary btn-sm" type="button">
+                  💡 Encender Luces / Volver
+                </button>
+              </div>
+
+              <div class="hud-sliders">
+                <div class="control-group">
+                  <label for="slider-speed">Velocidad Óptica:</label>
+                  <input type="range" id="slider-speed" min="0.2" max="3.0" step="0.1" value="1.0">
+                  <span id="speed-val">1.0x</span>
+                </div>
+                <div class="control-group">
+                  <label for="slider-intensity">Intensidad / Pulso:</label>
+                  <input type="range" id="slider-intensity" min="0.5" max="2.0" step="0.1" value="1.0">
+                  <span id="intensity-val">1.0x</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ========================================================
+             PANEL LATERAL: COMPUTADORA (Visualizador Arriba + 5 Cuadrados)
+             ======================================================== -->
+        <aside class="sidebar-computer glass-panel">
+          
+          <div class="computer-header">
+            <div class="pc-title-bar">
+              <span class="pc-dot red"></span>
+              <span class="pc-dot yellow"></span>
+              <span class="pc-dot green"></span>
+              <span class="pc-title">TERMINAL DE PROYECCIÓN</span>
+            </div>
+            <span class="pc-version">v2.0 Optical Engine</span>
+          </div>
+
+          <!-- 1. Visualizador Superior Grande para Saber qué Elegir -->
+          <section class="preview-visualizer-section">
+            <div class="visualizer-header">
+              <span class="viz-label">VISUALIZADOR PREVIO</span>
+              <span id="viz-badge" class="viz-badge">Rotación Infinita</span>
+            </div>
+
+            <div class="visualizer-screen">
+              <img id="viz-large-image" src="img/illusion_spiral.jpg" alt="Previsualización de Ilusión" class="viz-main-image">
+              <div class="viz-scanlines"></div>
+              <div class="viz-corner tl"></div>
+              <div class="viz-corner tr"></div>
+              <div class="viz-corner bl"></div>
+              <div class="viz-corner br"></div>
+            </div>
+
+            <div class="visualizer-info">
+              <h2 id="viz-title" class="viz-title">1. Espiral Hipnótica</h2>
+              <p id="viz-desc" class="viz-desc">
+                Genera una potente ilusión de movimiento continuo y dilatación hacia el centro.
+              </p>
+            </div>
+          </section>
+
+          <!-- 2. Las 5 Opciones en Cuadrados al Costado -->
+          <section class="illusion-options-section">
+            <div class="section-label-bar">
+              <span class="section-label">OPCIONES DE ILUSIONES (5)</span>
+              <span class="section-sub">Haz clic para previsualizar</span>
+            </div>
+
+            <div class="options-grid" id="options-grid">
+              <!-- Cards generated dynamically via JavaScript -->
+            </div>
+          </section>
+
+          <!-- 3. Pendrive Status & Download Action Area -->
+          <section class="usb-transfer-section">
+            <div class="usb-device-card" id="usb-device-card">
+              <div class="usb-thumb">
+                <img src="img/pendrive.jpg" alt="Pendrive Flash Drive" class="usb-device-img">
+                <span id="usb-led-indicator" class="usb-led off"></span>
+              </div>
+              <div class="usb-meta">
+                <span class="usb-title">PENDRIVE USB 3.0</span>
+                <span id="usb-status-text" class="usb-status">Vacío (Listo para grabar)</span>
+              </div>
+            </div>
+
+            <!-- Download Progress Bar -->
+            <div id="download-progress-container" class="download-progress-container hidden">
+              <div class="progress-bar-track">
+                <div id="download-progress-bar" class="progress-bar-fill"></div>
+              </div>
+              <span id="progress-text" class="progress-text">Descargando... 0%</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="transfer-actions">
+              <button id="btn-download-usb" class="btn btn-download btn-glow" type="button">
+                <span class="btn-icon">💾</span>
+                <span class="btn-text">DESCARGAR EN PENDRIVE</span>
+              </button>
+
+              <button id="btn-carry-usb" class="btn btn-carry btn-glow hidden" type="button">
+                <span class="btn-icon">🚀</span>
+                <span class="btn-text">LLEVAR AL PROYECTOR</span>
+              </button>
+            </div>
+          </section>
+
+        </aside>
+
+      </main>
+
+    </section>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/illusions.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

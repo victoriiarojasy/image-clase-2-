@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="waveBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#180033"/>
+      <stop offset="100%" stop-color="#050010"/>
+    </radialGradient>
+    <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff007f"/>
+      <stop offset="33%" stop-color="#00f2fe"/>
+      <stop offset="66%" stop-color="#4facfe"/>
+      <stop offset="100%" stop-color="#ff0844"/>
+    </linearGradient>
+    <linearGradient id="waveGrad2" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#00ff87"/>
+      <stop offset="50%" stop-color="#60efff"/>
+      <stop offset="100%" stop-color="#ff00aa"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="500" height="500" fill="url(#waveBg)" rx="16"/>
+
+  <!-- High-frequency kinetic moire sine waves -->
+  <g fill="none" stroke-width="2.5" opacity="0.9">
+    <!-- Group 1: Horizontal modulated wave ripples -->
+    <path d="M 0,50 Q 125,20 250,50 T 500,50" stroke="url(#waveGrad1)" />
+    <path d="M 0,75 Q 125,115 250,75 T 500,75" stroke="#ffffff" opacity="0.6" />
+    <path d="M 0,100 Q 125,60 250,100 T 500,100" stroke="url(#waveGrad1)" />
+    <path d="M 0,125 Q 125,175 250,125 T 500,125" stroke="url(#waveGrad2)" />
+    <path d="M 0,150 Q 125,100 250,150 T 500,150" stroke="#00f2fe" />
+    <path d="M 0,175 Q 125,235 250,175 T 500,175" stroke="#ff007f" />
+    <path d="M 0,200 Q 125,140 250,200 T 500,200" stroke="#ffffff" opacity="0.8" />
+    <path d="M 0,225 Q 125,295 250,225 T 500,225" stroke="url(#waveGrad2)" />
+    <path d="M 0,250 Q 125,180 250,250 T 500,250" stroke="#00ff87" stroke-width="3.5" />
+    <path d="M 0,275 Q 125,355 250,275 T 500,275" stroke="url(#waveGrad1)" />
+    <path d="M 0,300 Q 125,220 250,300 T 500,300" stroke="#ffffff" opacity="0.8" />
+    <path d="M 0,325 Q 125,415 250,325 T 500,325" stroke="#ff00aa" />
+    <path d="M 0,350 Q 125,260 250,350 T 500,350" stroke="#60efff" />
+    <path d="M 0,375 Q 125,475 250,375 T 500,375" stroke="url(#waveGrad2)" />
+    <path d="M 0,400 Q 125,300 250,400 T 500,400" stroke="url(#waveGrad1)" />
+    <path d="M 0,425 Q 125,535 250,425 T 500,425" stroke="#ffffff" opacity="0.6" />
+    <path d="M 0,450 Q 125,340 250,450 T 500,450" stroke="url(#waveGrad2)" />
+
+    <!-- Cross Interference Rings for pulsating illusion -->
+    <ellipse cx="250" cy="250" rx="60" ry="180" stroke="#ffffff" stroke-width="1.5" opacity="0.5" transform="rotate(25 250 250)"/>
+    <ellipse cx="250" cy="250" rx="100" ry="210" stroke="#00f2fe" stroke-width="1.8" opacity="0.7" transform="rotate(-35 250 250)"/>
+    <ellipse cx="250" cy="250" rx="140" ry="230" stroke="#ff007f" stroke-width="2" opacity="0.6" transform="rotate(45 250 250)"/>
+    <ellipse cx="250" cy="250" rx="180" ry="240" stroke="#00ff87" stroke-width="1.5" opacity="0.5" transform="rotate(-60 250 250)"/>
+  </g>
+
+  <!-- Central optical floating sphere effect -->
+  <circle cx="250" cy="250" r="45" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.9"/>
+  <circle cx="250" cy="250" r="20" fill="#ffffff" opacity="0.3"/>
+</svg>

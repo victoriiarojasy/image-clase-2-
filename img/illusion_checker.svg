@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bulgeCenter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#e0e7ff"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </radialGradient>
+    <filter id="distortShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="500" height="500" fill="#0f172a" rx="16"/>
+
+  <!-- Bulging Checkerboard illusion with alternating dot corners -->
+  <g transform="translate(25, 25)">
+    <!-- Base Checker Grid (450x450) with optical illusion offset points -->
+    <rect width="450" height="450" fill="#ffffff" rx="8"/>
+    
+    <!-- Dark checks in checkered pattern -->
+    <!-- We will draw alternating tiles with special optical dots that create the 3D bulge illusion -->
+    <!-- Row 0 -->
+    <rect x="0" y="0" width="45" height="45" fill="#1e293b"/>
+    <rect x="90" y="0" width="45" height="45" fill="#1e293b"/>
+    <rect x="180" y="0" width="45" height="45" fill="#1e293b"/>
+    <rect x="270" y="0" width="45" height="45" fill="#1e293b"/>
+    <rect x="360" y="0" width="45" height="45" fill="#1e293b"/>
+    
+    <!-- Row 1 -->
+    <rect x="45" y="45" width="45" height="45" fill="#1e293b"/>
+    <rect x="135" y="45" width="45" height="45" fill="#1e293b"/>
+    <rect x="225" y="45" width="45" height="45" fill="#1e293b"/>
+    <rect x="315" y="45" width="45" height="45" fill="#1e293b"/>
+    <rect x="405" y="45" width="45" height="45" fill="#1e293b"/>
+
+    <!-- Row 2 -->
+    <rect x="0" y="90" width="45" height="45" fill="#1e293b"/>
+    <rect x="90" y="90" width="45" height="45" fill="#1e293b"/>
+    <rect x="180" y="90" width="45" height="45" fill="#1e293b"/>
+    <rect x="270" y="90" width="45" height="45" fill="#1e293b"/>
+    <rect x="360" y="90" width="45" height="45" fill="#1e293b"/>
+
+    <!-- Row 3 -->
+    <rect x="45" y="135" width="45" height="45" fill="#1e293b"/>
+    <rect x="135" y="135" width="45" height="45" fill="#1e293b"/>
+    <rect x="225" y="135" width="45" height="45" fill="#1e293b"/>
+    <rect x="315" y="135" width="45" height="45" fill="#1e293b"/>
+    <rect x="405" y="135" width="45" height="45" fill="#1e293b"/>
+
+    <!-- Row 4 -->
+    <rect x="0" y="180" width="45" height="45" fill="#1e293b"/>
+    <rect x="90" y="180" width="45" height="45" fill="#1e293b"/>
+    <rect x="180" y="180" width="45" height="45" fill="#1e293b"/>
+    <rect x="270" y="180" width="45" height="45" fill="#1e293b"/>
+    <rect x="360" y="180" width="45" height="45" fill="#1e293b"/>
+
+    <!-- Row 5 -->
+    <rect x="45" y="225" width="45" height="45" fill="#1e293b"/>
+    <rect x="135" y="225" width="45" height="45" fill="#1e293b"/>
+    <rect x="225" y="225" width="45" height="45" fill="#1e293b"/>
+    <rect x="315" y="225" width="45" height="45" fill="#1e293b"/>
+    <rect x="405" y="225" width="45" height="45" fill="#1e293b"/>
+
+    <!-- Row 6 -->
+    <rect x="0" y="270" width="45" height="45" fill="#1e293b"/>
+    <rect x="90" y="270" width="45" height="45" fill="#1e293b"/>
+    <rect x="180" y="270" width="45" height="45" fill="#1e293b"/>
+    <rect x="270" y="270" width="45" height="45" fill="#1e293b"/>
+    <rect x="360" y="270" width="45" height="45" fill="#1e293b"/>
+
+    <!-- Row 7 -->
+    <rect x="45" y="315" width="45" height="45" fill="#1e293b"/>
+    <rect x="135" y="315" width="45" height="45" fill="#1e293b"/>
+    <rect x="225" y="315" width="45" height="45" fill="#1e293b"/>
+    <rect x="315" y="315" width="45" height="45" fill="#1e293b"/>
+    <rect x="405" y="315" width="45" height="45" fill="#1e293b"/>
+
+    <!-- Row 8 -->
+    <rect x="0" y="360" width="45" height="45" fill="#1e293b"/>
+    <rect x="90" y="360" width="45" height="45" fill="#1e293b"/>
+    <rect x="180" y="360" width="45" height="45" fill="#1e293b"/>
+    <rect x="270" y="360" width="45" height="45" fill="#1e293b"/>
+    <rect x="360" y="360" width="45" height="45" fill="#1e293b"/>
+
+    <!-- Row 9 -->
+    <rect x="45" y="405" width="45" height="45" fill="#1e293b"/>
+    <rect x="135" y="405" width="45" height="45" fill="#1e293b"/>
+    <rect x="225" y="405" width="45" height="45" fill="#1e293b"/>
+    <rect x="315" y="405" width="45" height="45" fill="#1e293b"/>
+    <rect x="405" y="405" width="45" height="45" fill="#1e293b"/>
+
+    <!-- Optical Illusion Dots placed at intersections to bend lines visually (Akiyoshi Bulge Effect) -->
+    <!-- Concentric optical distortion micro-squares -->
+    <!-- Quadrant 1 (Top Left): White inside dark, dark inside white offset towards center -->
+    <rect x="128" y="128" width="14" height="14" fill="#ffffff" />
+    <rect x="173" y="128" width="14" height="14" fill="#1e293b" />
+    <rect x="218" y="128" width="14" height="14" fill="#ffffff" />
+    <rect x="263" y="128" width="14" height="14" fill="#1e293b" />
+    <rect x="308" y="128" width="14" height="14" fill="#ffffff" />
+
+    <rect x="128" y="173" width="14" height="14" fill="#1e293b" />
+    <rect x="173" y="173" width="14" height="14" fill="#ffffff" />
+    <rect x="218" y="173" width="14" height="14" fill="#1e293b" />
+    <rect x="263" y="173" width="14" height="14" fill="#ffffff" />
+    <rect x="308" y="173" width="14" height="14" fill="#1e293b" />
+
+    <rect x="128" y="218" width="14" height="14" fill="#ffffff" />
+    <rect x="173" y="218" width="14" height="14" fill="#1e293b" />
+    <rect x="218" y="218" width="14" height="14" fill="#ffffff" />
+    <rect x="263" y="218" width="14" height="14" fill="#1e293b" />
+    <rect x="308" y="218" width="14" height="14" fill="#ffffff" />
+
+    <rect x="128" y="263" width="14" height="14" fill="#1e293b" />
+    <rect x="173" y="263" width="14" height="14" fill="#ffffff" />
+    <rect x="218" y="263" width="14" height="14" fill="#1e293b" />
+    <rect x="263" y="263" width="14" height="14" fill="#ffffff" />
+    <rect x="308" y="263" width="14" height="14" fill="#1e293b" />
+
+    <rect x="128" y="308" width="14" height="14" fill="#ffffff" />
+    <rect x="173" y="308" width="14" height="14" fill="#1e293b" />
+    <rect x="218" y="308" width="14" height="14" fill="#ffffff" />
+    <rect x="263" y="308" width="14" height="14" fill="#1e293b" />
+    <rect x="308" y="308" width="14" height="14" fill="#ffffff" />
+
+    <!-- Central sphere distortion illusion glow -->
+    <circle cx="225" cy="225" r="140" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="8 6" opacity="0.45"/>
+    <circle cx="225" cy="225" r="85" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.45"/>
+  </g>
+</svg>

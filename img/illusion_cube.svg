@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="cubeBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0b1329"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </radialGradient>
+    <linearGradient id="neonOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff7b00"/>
+      <stop offset="50%" stop-color="#ff3366"/>
+      <stop offset="100%" stop-color="#cc0066"/>
+    </linearGradient>
+    <linearGradient id="neonCyan" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="50%" stop-color="#0077ff"/>
+      <stop offset="100%" stop-color="#7000ff"/>
+    </linearGradient>
+    <linearGradient id="neonGold" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffd000"/>
+      <stop offset="100%" stop-color="#ff5500"/>
+    </linearGradient>
+    <filter id="cubeGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="500" height="500" fill="url(#cubeBg)" rx="16"/>
+  
+  <!-- Grid Matrix Lines -->
+  <g opacity="0.15" stroke="#00f0ff" stroke-width="1">
+    <line x1="50" y1="0" x2="50" y2="500" />
+    <line x1="150" y1="0" x2="150" y2="500" />
+    <line x1="250" y1="0" x2="250" y2="500" />
+    <line x1="350" y1="0" x2="350" y2="500" />
+    <line x1="450" y1="0" x2="450" y2="500" />
+    <line x1="0" y1="50" x2="500" y2="50" />
+    <line x1="0" y1="150" x2="500" y2="150" />
+    <line x1="0" y1="250" x2="500" y2="250" />
+    <line x1="0" y1="350" x2="500" y2="350" />
+    <line x1="0" y1="450" x2="500" y2="450" />
+  </g>
+
+  <!-- Impossible Geometry / Escher-Penrose Cube Structure -->
+  <g transform="translate(250, 250)" filter="url(#cubeGlow)">
+    <!-- Outer isometric frame -->
+    <!-- Front/Top/Side interlocking impossible beams -->
+    <!-- Beam 1: Top horizontal impossible bar -->
+    <path d="M -120,-110 L 0,-180 L 120,-110 L 80,-90 L 0,-140 L -80,-90 Z" fill="url(#neonCyan)" />
+    <path d="M 120,-110 L 120,30 L 80,10 L 80,-90 Z" fill="#0055aa" opacity="0.9"/>
+    <path d="M 0,-180 L 0,-140 L -80,-90 L -80,-130 Z" fill="#0099ff" />
+    
+    <!-- Beam 2: Right vertical impossible bar -->
+    <path d="M 120,-110 L 120,50 L 80,30 L 80,-90 Z" fill="url(#neonOrange)" />
+    <path d="M 120,50 L 0,120 L -40,100 L 80,30 Z" fill="#b32400" />
+    <path d="M 80,30 L 80,170 L 40,150 L 40,10 Z" fill="url(#neonOrange)" opacity="0.95"/>
+
+    <!-- Beam 3: Bottom horizontal & Left uprights crossing behind & front simultaneously -->
+    <path d="M 0,120 L -120,50 L -80,30 L 0,80 Z" fill="url(#neonGold)" />
+    <path d="M -120,50 L -120,-110 L -80,-90 L -80,30 Z" fill="#d97706" />
+    <path d="M -120,50 L -120,90 L 0,160 L 0,120 Z" fill="#92400e" />
+
+    <!-- Center impossible cross junction -->
+    <path d="M -60,-35 L 60,-35 L 20,-15 L -60,-15 Z" fill="#00ffff" opacity="0.8"/>
+    <path d="M -20,-15 L 20,-15 L 20,85 L -20,65 Z" fill="url(#neonOrange)" opacity="0.9"/>
+    <path d="M -60,-15 L -20,-15 L -20,65 L -60,45 Z" fill="#ff0055" />
+    
+    <!-- Impossible Penrose Triangle Core inside -->
+    <polygon points="0,-70 60,35 -60,35" fill="none" stroke="#ffffff" stroke-width="4" opacity="0.8"/>
+    <polygon points="0,-40 35,20 -35,20" fill="none" stroke="#00f0ff" stroke-width="2" opacity="0.6"/>
+
+    <!-- Floating optical particles -->
+    <circle cx="-130" cy="-60" r="4" fill="#00f0ff" />
+    <circle cx="140" cy="80" r="3.5" fill="#ff5500" />
+    <circle cx="0" cy="-195" r="5" fill="#ffd000" />
+    <circle cx="-90" cy="120" r="3" fill="#ff0077" />
+    <circle cx="100" cy="-130" r="4" fill="#00f0ff" />
+  </g>
+</svg>
